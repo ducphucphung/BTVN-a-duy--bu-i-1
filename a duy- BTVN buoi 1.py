@@ -50,7 +50,7 @@ def cau_moi(b):
     chuỗi=''
     for từ in b:
         if từ not in chuỗi:   
-           chuỗi = chuỗi + từ
+           chuỗi = chuỗi + " "+  từ
     return chuỗi
 print(cau_moi(b))
         
