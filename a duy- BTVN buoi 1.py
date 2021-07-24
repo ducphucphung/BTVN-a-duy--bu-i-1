@@ -1,6 +1,7 @@
 #Bai 1:Tính và in ra tích của 10 số tự nhiên đầu tiên . [0 →10].
 tong=(10+0)*11/2
 print(tong)
+
 #Bai 2:Nhập vào số nguyên dương  n từ bàn phím. Tính và in ra n! (giai thừa). 
 n = int(input("Nhập số cần tính giai thừa: "))
  
@@ -14,22 +15,26 @@ def giaithua(n):
         return a
 giaithua(n)
 print(giaithua(n))
+
 #Bài 3: Nhập vào số nguyên dương n từ bàn phím. Kiểm tra xem số n có phải là số nguyên tố hay không. Nếu là số nguyên tố thì in ra dòng text : “Đây là số nguyên tố”. Nếu không thì in ra: “Không phải là số nguyên tố”. 
-
-
+import math
+a=int(input("Nhập một số:"))
+def songuyento(a):
+    for i in range (2, int(math.sqrt(a)+1)):
+        if a%i==0:
+            return False
+    return True
+print(songuyento(a))
 n=int(input("Hãy nhập một số tự nhiên bất kì:"))
-if n<2 or n%2==0 and n/2!=1 or n%3 ==0 and n/3!=1 or n%5==0 and n/5!=1 or n%7==0 and n/7!=1:
-    print("Đây không là số nguyên tố")
-else:
-    print("Đây là số nguyên tố")
+
 #Bài 4:Nhập vào từ bàn phím số nguyên n. In ra tổng của các số thỏa mã hai điều kiện: - nhỏ hơn n và là số chẵn.
-a=int(input("Nhập 1 số nguyên"))
-if a%2==0:
-    tong_so_chan=((a-2)*a)/4
-    print(tong_so_chan)
-elif a%2==1:
-    tong_so_le=(a*a)/4
-    print(tong_so_le)
+def ans(n):
+    b=0
+    for i in range (0,n,+2):
+        b=b+i
+    return b
+print(ans(n))
+    
 #Bài 5: nhập vào số nguyên từ bàn phím. In ra tích của 2 nhân với các giá trị nhỏ n. 
 n=int(input("Hãy nhập một số nguyên n:"))    
 i=1
@@ -40,9 +45,11 @@ for i in range(1, n+1):
 for n in range ( 10, 51):
     if n%6==0:
         print(n)
+        
 #Bài 7: Viết một chương trình chấp nhận chuỗi là các dòng được nhập vào, chuyển các dòng này thành chữ in hoa và in ra màn hình
 a=str(input("Nhập 1 chuỗi bất kì:"))
 print(a.upper())
+
 #Bài 8: Viết một chương trình chấp nhận đầu vào là một chuỗi các từ tách biệt bởi khoảng trắng, loại bỏ các từ trùng lặp rồi in chúng.
 a=input("Nhập một chuỗi")
 b=getattr(a, 'split')()
@@ -54,17 +61,40 @@ def cau_moi(b):
     return chuỗi
 print(cau_moi(b))
         
-    
 #Bài 9:  Đề bài: Yêu cầu người dùng cung cấp một chuỗi và cho biết đó có phải một palindrome không .Chú ý: palindrome là một chuỗi có thể được viết xuôi hay viết ngược vẫn chỉ cho ra chính nó).
 
 a=str(input("Nhập một cụm từ:" ))
-b=str(input("Nhập một cụm từ:"))
-if a[::-1]==b:
+if a[:len(a)//2] == a[:-len(a)//2]:
     print("Đây là một palindrome")
 else:
-    print("Đây chưa là một palindrome")
+    print("Đây không là một palindrome")
+
 #Bài 10: Viết một chương trình chấp nhận chuỗi từ được phân tách bằng khoảng trống và in các từ chỉ gồm chữ số.
 import re
 a=input()
 result=re.findall("\d+",a)
 print(result)
+
+#Bài 11:
+def Roman(a):
+    gia_tri={"I":1, "V":5, "X":10, "L":50, "C":100, "D":500, "M":500}
+    ans=0
+    for i in range (len(a)):
+        if i==0:
+            ans=ans+value[a[i]]
+        else:
+            if value[a[i]] > value[a[i-1]]:
+                ans=ans+value[a[i]]-2*[a[i-1]]
+            else:
+                ans=ans+value[a[i]]
+    return ans
+
+#Bài 13:
+def restoreString(s: str, indices: list) -> str:
+    output = [''] * len(s) 
+    index = 0
+    for n in indices:
+        output[n]=s[index]
+        index+=1
+    output = ''.join(output)
+    return output
